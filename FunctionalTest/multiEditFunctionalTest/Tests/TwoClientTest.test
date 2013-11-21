@@ -1,0 +1,6 @@
+start client1
+start client2
+send client1 "Some text"
+check client2 "Some text"
+send client2 "Some more text"
+check client1 "Some more text"
