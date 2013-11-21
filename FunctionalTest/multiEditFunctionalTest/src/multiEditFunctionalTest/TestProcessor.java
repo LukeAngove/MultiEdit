@@ -3,9 +3,14 @@
  */
 package multiEditFunctionalTest;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import client.ClientGenerator;
 import client.IClientGenerator;
 import client.IMultiEditClient;
 
@@ -102,6 +107,27 @@ public class TestProcessor {
 	 */
 	public int getNumberOfClients() {
 		return clients.size();
+	}
+	
+	/**
+	 * Runs functional test for given file.
+	 */
+	public static void main(String[] args) {
+		IClientGenerator cg = new ClientGenerator();
+		TestProcessor tp = new TestProcessor(cg);
+		
+		try (BufferedReader br = new BufferedReader(new FileReader("Tests/TwoClientTest.test"))) {
+			String line;
+			while((line = br.readLine()) != null) {
+				tp.process(line);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			System.exit(1);
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(2);
+		}
 	}
 
 
