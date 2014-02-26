@@ -9,7 +9,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<classpath>
-		<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	</classpath>
 </projectDescription>
