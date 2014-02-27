@@ -1,7 +1,7 @@
 /**
  * 
  */
-package lcs;
+package client.lcs;
 
 /**
  * @author luke

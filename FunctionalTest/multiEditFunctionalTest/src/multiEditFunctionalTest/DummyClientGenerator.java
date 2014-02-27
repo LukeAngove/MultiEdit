@@ -25,7 +25,6 @@ public class DummyClientGenerator implements IClientGenerator {
 	 */
 	@Override
 	public IMultiEditClient getNewClient() {
-		// TODO Auto-generated method stub
 		MultiEditClientDummy newClient = new MultiEditClientDummy();
 		clients.add(newClient);
 		return newClient;

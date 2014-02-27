@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import server.IServer;
+import server.Server;
 import client.ClientGenerator;
 import client.IClientGenerator;
 import client.IMultiEditClient;
@@ -55,6 +57,7 @@ public class TestProcessor {
 				checkClientHasText( name, textToCheckFor );
 				break;
 			default:
+				// TODO Use a better exception!!!
 				assert(false);
 		}
 		
@@ -113,10 +116,13 @@ public class TestProcessor {
 	 * Runs functional test for given file.
 	 */
 	public static void main(String[] args) {
-		IClientGenerator cg = new ClientGenerator();
+		IServer server = new Server();
+		IClientGenerator cg = new ClientGenerator(server);
 		TestProcessor tp = new TestProcessor(cg);
 		
-		try (BufferedReader br = new BufferedReader(new FileReader("Tests/TwoClientTest.test"))) {
+		String fileFullPath = args[0];
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(fileFullPath))) {
 			String line;
 			while((line = br.readLine()) != null) {
 				tp.process(line);
