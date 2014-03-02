@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import server.IServer;
-import server.Server;
+import server.ClientSideServer;
 import client.ClientGenerator;
 import client.IClientGenerator;
 import client.IMultiEditClient;
@@ -116,7 +116,7 @@ public class TestProcessor {
 	 * Runs functional test for given file.
 	 */
 	public static void main(String[] args) {
-		IServer server = new Server();
+		IServer server = new ClientSideServer();
 		IClientGenerator cg = new ClientGenerator(server);
 		TestProcessor tp = new TestProcessor(cg);
 		

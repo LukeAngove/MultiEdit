@@ -3,6 +3,13 @@
  */
 package client;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+
+import communicator.Communicator;
+
 import server.IServer;
 
 /**
@@ -10,22 +17,22 @@ import server.IServer;
  *
  */
 public class Client implements IMultiEditClient {
-	IServer server;
+	private Communicator coms;
 
-	public Client(IServer server) {
-		this.server = server;
+	public Client(Communicator coms)  {
+		this.coms = coms;
 	}
+
 
 	@Override
 	public void send(String text) {
-		// TODO Auto-generated method stub
+		coms.send(text);
 		
 	}
 
 	@Override
 	public String getContent() {
-		// TODO Auto-generated method stub
-		return null;
+		return coms.recieve();
 	}
 
 

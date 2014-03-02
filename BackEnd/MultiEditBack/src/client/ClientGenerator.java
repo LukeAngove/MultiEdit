@@ -3,6 +3,8 @@
  */
 package client;
 
+import communicator.Communicator;
+
 import server.IServer;
 
 /**
@@ -19,7 +21,8 @@ public class ClientGenerator implements IClientGenerator {
 
 	@Override
 	public IMultiEditClient getNewClient() {
-		return new Client(server);
+		Communicator coms = new ClientSideSocketCommunicator(server);
+		return new Client(coms);
 	}
 
 }
